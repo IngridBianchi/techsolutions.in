@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: https://techosolutions.in
+logo_url: ""
+
+collections:
+  - name: "posts"
+    label: "Artículos del blog"
+    folder: "src/blog/posts"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha de publicación", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss.SSSZ" }
+      - label: "Categoría"
+        name: "category"
+        widget: "select"
+        options:
+          - "Legacy & deuda técnica"
+          - "Cloud & performance"
+          - "Refactor vs rewrite"
+          - "IA / no-code / sistemas DIY"
+      - { label: "Extracto (resumen que aparece en la lista)", name: "excerpt", widget: "text", required: false }
+      - { label: "Contenido", name: "body", widget: "markdown" }

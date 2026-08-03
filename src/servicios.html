@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios — TechoSolutions</title>
+<meta name="description" content="Auditoría técnica de sistemas legacy, refactorización incremental y optimización de costos cloud para equipos pequeños y founders.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
+<script id="counterscale-script" data-site-id="techosolutions-in" src="https://counterscale.techosolutionsin.workers.dev/tracker.js" defer></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { overflow-x: clip; font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; color: var(--color-ink); background: var(--color-paper); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+
+h1, h2, h3, h4, .display { font-family: var(--font-display); font-weight: 600; font-style: normal; line-height: 1.2; letter-spacing: -0.02em; overflow-wrap: anywhere; min-width: 0; }
+h1 { font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem); letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: clamp(1.75rem, 3.5vw + 0.5rem, 3rem); letter-spacing: -0.025em; }
+h3 { font-size: var(--text-xl); letter-spacing: -0.02em; }
+.body-large { font-size: var(--text-md); line-height: 1.65; color: var(--color-ink-2); max-width: 65ch; }
+.body { font-size: var(--text-base); line-height: 1.65; color: var(--color-ink-2); max-width: 65ch; }
+.mono { font-family: var(--font-display); }
+.accent { color: var(--color-accent); }
+.muted { color: var(--color-muted); }
+.wordmark { font-family: var(--font-outlier); font-weight: 600; font-size: 1.125rem; letter-spacing: -0.02em; }
+.container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: clamp(var(--space-md), 4vw, var(--space-3xl)); }
+section { padding-block: var(--space-4xl); }
+.section__title { margin-bottom: var(--space-xl); max-width: 20ch; }
+.section__title--wide { max-width: 30ch; }
+.section__sub { margin-top: var(--space-sm); max-width: 60ch; }
+
+.nav { position: fixed; top: var(--space-md); left: 50%; transform: translateX(-50%); z-index: var(--z-sticky); width: fit-content; max-width: calc(100vw - var(--space-xl)); background: var(--color-nav-bg); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid var(--color-rule); border-radius: var(--radius-full); padding: var(--space-xs) var(--space-sm); display: flex; align-items: center; gap: var(--space-lg); }
+.nav__wordmark { font-family: var(--font-outlier); font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.02em; color: var(--color-ink); white-space: nowrap; padding: var(--space-2xs) var(--space-sm); }
+.nav__wordmark span { color: var(--color-accent); }
+.nav__links { display: flex; align-items: center; gap: var(--space-2xs); list-style: none; }
+.nav__link { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); padding: var(--space-2xs) var(--space-sm); border-radius: var(--radius-full); transition: color var(--dur-micro) var(--ease-out), background var(--dur-micro) var(--ease-out); white-space: nowrap; }
+.nav__link:hover { color: var(--color-ink); background: var(--color-paper-2); }
+.nav__link--active { color: var(--color-ink); background: var(--color-paper-3); }
+.nav__cta { background: var(--color-accent); color: var(--color-accent-ink) !important; font-weight: 600; padding: var(--space-2xs) var(--space-md) !important; }
+.nav__cta:hover { background: var(--color-accent-2) !important; color: var(--color-accent-ink) !important; }
+.nav__toggle { display: none; background: none; border: none; color: var(--color-ink); font-size: var(--text-xl); cursor: pointer; padding: var(--space-2xs); }
+
+.page-header { padding-top: calc(var(--space-4xl) + 4rem); padding-bottom: var(--space-2xl); }
+.page-header h1 { margin-bottom: var(--space-md); }
+.service-detail { background: var(--color-paper-2); }
+.service-detail + .service-detail { background: var(--color-paper); }
+.service-detail__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl); align-items: start; }
+.service-detail__info h3 { margin-bottom: var(--space-md); }
+.service-detail__info ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-sm); margin-top: var(--space-lg); }
+.service-detail__info li { font-size: var(--text-sm); color: var(--color-muted); padding-left: var(--space-lg); position: relative; }
+.service-detail__info li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 12px; height: 1px; background: var(--color-accent); }
+.service-detail__cta { background: var(--color-paper); border: 1px solid var(--color-rule); border-radius: var(--radius-md); padding: var(--space-xl); }
+.service-detail__cta h4 { font-family: var(--font-display); margin-bottom: var(--space-sm); }
+.service-detail__cta p { font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-md); }
+
+.footer { border-top: 1px solid var(--color-rule); padding-block: var(--space-xl); }
+.footer__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; }
+.footer__copy { font-size: var(--text-sm); color: var(--color-muted); }
+.footer__links { display: flex; gap: var(--space-lg); list-style: none; }
+.footer__links a { font-size: var(--text-sm); color: var(--color-muted); transition: color var(--dur-micro) var(--ease-out); }
+.footer__links a:hover { color: var(--color-ink); }
+
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.icon-svg { width: 20px; height: 20px; stroke: var(--color-ink-2); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+@media (max-width: 60rem) {
+  .service-detail__grid { grid-template-columns: 1fr; }
+  .nav__links { display: none; }
+  .nav__toggle { display: block; }
+  .nav.is-open .nav__links { display: flex; flex-direction: column; position: absolute; top: calc(100% + var(--space-xs)); left: 50%; transform: translateX(-50%); background: var(--color-paper-2); border: 1px solid var(--color-rule); border-radius: var(--radius-md); padding: var(--space-sm); min-width: 200px; gap: var(--space-2xs); }
+}
+@media (max-width: 40rem) {
+  section { padding-block: var(--space-3xl); }
+  h1 { font-size: var(--text-2xl); }
+  .nav { padding: var(--space-2xs) var(--space-sm); }
+  .footer__inner { flex-direction: column; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 150ms !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Navegación principal">
+  <a href="/" class="nav__wordmark">tech<span>o</span>solutions</a>
+  <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+  </button>
+  <ul class="nav__links">
+    <li><a href="/" class="nav__link">Inicio</a></li>
+    <li><a href="/servicios/" class="nav__link nav__link--active">Servicios</a></li>
+    <li><a href="/blog/" class="nav__link">Blog & Recursos</a></li>
+    <li><a href="/casos/" class="nav__link">Casos</a></li>
+    <li><a href="/sobre-mi/" class="nav__link">Sobre mí</a></li>
+    <li><a href="/contacto/" class="nav__link nav__cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <p class="hero__eyebrow" style="font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-accent); margin-bottom: var(--space-md); letter-spacing: 0.08em; text-transform: uppercase;">· servicios</p>
+    <h1>Lo que hago para que tu sistema vuelva a ser un activo</h1>
+    <p class="body-large">Cada servicio está pensado para sistemas en producción que ya duelen — no para greenfields ni proyectos nuevos.</p>
+  </div>
+</section>
+
+<section class="service-detail" id="auditoria">
+  <div class="container service-detail__grid">
+    <div class="service-detail__info reveal">
+      <h3>Auditoría técnica de sistemas legacy (48h)</h3>
+      <p class="body">Un análisis rápido y profundo para identificar los 3–5 puntos que más dinero te están costando hoy.</p>
+      <ul>
+        <li>Revisión de arquitectura general y flujos críticos</li>
+        <li>Métricas de performance: latencia, errores, throughput</li>
+        <li>Análisis de consultas y dependencias</li>
+        <li>Evaluación de procesos de despliegue y CI/CD</li>
+        <li>Identificación de costos cloud evitables</li>
+      </ul>
+      <p class="body" style="margin-top: var(--space-lg);"><strong>Entregas:</strong> Informe ejecutivo con 3–5 riesgos prioritarios, estimación de impacto económico/técnico y roadmap de refactorización incremental.</p>
+    </div>
+    <div class="service-detail__cta reveal" style="transition-delay: 100ms">
+      <h4>¿Listo para saber qué está mal?</h4>
+      <p>En 48 horas sabés exactamente por dónde empezar.</p>
+      <a href="/contacto/" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: var(--space-xs); font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-md); border: none; cursor: pointer; transition: transform var(--dur-micro) var(--ease-out), background var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out); white-space: nowrap;">Solicitar auditoría</a>
+    </div>
+  </div>
+</section>
+
+<section class="service-detail" id="refactorizacion">
+  <div class="container service-detail__grid">
+    <div class="service-detail__info reveal">
+      <h3>Refactorización incremental &amp; arquitectura modular</h3>
+      <p class="body">Transformamos el monolito en una arquitectura moderna sin detener el negocio. Módulo a módulo, con el sistema viejo conviviendo con el nuevo hasta que cada pieza está lista.</p>
+      <ul>
+        <li>Patrón Strangler Fig para migración sin downtime</li>
+        <li>Modular Monolith como paso intermedio antes de microservicios</li>
+        <li>Arquitectura DDD y Hexagonal para boundaries claros</li>
+        <li>Mensajería asíncrona y patrones de resiliencia (circuit breaker, retry, bulkhead)</li>
+        <li>.NET 8, con soporte para Node, Python o el stack que tengas</li>
+      </ul>
+      <p class="body" style="margin-top: var(--space-lg);"><strong>Entregas:</strong> Arquitectura modularizada con boundaries definidos, módulos refactorizados en producción y roadmap de continuidad.</p>
+    </div>
+    <div class="service-detail__cta reveal" style="transition-delay: 100ms">
+      <h4>Tu monolito no necesita un rewrite</h4>
+      <p>Se puede modernizar pieza por pieza, sin apagar el negocio.</p>
+      <a href="/contacto/" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: var(--space-xs); font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-md); border: none; cursor: pointer; transition: transform var(--dur-micro) var(--ease-out), background var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out); white-space: nowrap;">Empezar conversación</a>
+    </div>
+  </div>
+</section>
+
+<section class="service-detail" id="cloud">
+  <div class="container service-detail__grid">
+    <div class="service-detail__info reveal">
+      <h3>Optimización de costos cloud &amp; performance</h3>
+      <p class="body">La cloud bill que sube mes a mes sin explicación no es normal. Identifico servicios mal dimensionados, consultas ineficientes y arquitectura de costos ausente.</p>
+      <ul>
+        <li>Análisis de servicios cloud: compute, storage, networking, bases de datos</li>
+        <li>Revisión de consultas lentas y patrones de acceso a datos</li>
+        <li>Implementación de caché, circuit breakers y estrategias de retry</li>
+        <li>Arquitectura de costos: tagging, accountability por equipo, reservas</li>
+        <li>Reducción de latencia en flujos críticos</li>
+      </ul>
+      <p class="body" style="margin-top: var(--space-lg);"><strong>Resultado típico:</strong> 20–35% de reducción en costos de infraestructura y mejora significativa en tiempos de respuesta.</p>
+    </div>
+    <div class="service-detail__cta reveal" style="transition-delay: 100ms">
+      <h4>¿Cuánto estás quemando en la nube?</h4>
+      <p>La mayoría de los equipos pequeños pagan 2x lo que deberían.</p>
+      <a href="/contacto/" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: var(--space-xs); font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-md); border: none; cursor: pointer; transition: transform var(--dur-micro) var(--ease-out), background var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out); white-space: nowrap;">Revisar mi cloud bill</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <p class="footer__copy">© 2026 TechoSolutions — Arquitectura de software que paga dividendos</p>
+    <ul class="footer__links">
+      <li><a href="/sobre-mi/">Sobre mí</a></li>
+      <li><a href="/servicios/">Servicios</a></li>
+      <li><a href="/blog/">Blog & Recursos</a></li>
+      <li><a href="/casos/">Casos</a></li>
+      <li><a href="/contacto/">Contacto</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.nav__toggle')?.addEventListener('click', function() {
+  const nav = this.closest('.nav');
+  const expanded = nav.classList.toggle('is-open');
+  this.setAttribute('aria-expanded', expanded);
+});
+document.querySelectorAll('.nav__link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav')?.classList.remove('is-open');
+  });
+});
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>

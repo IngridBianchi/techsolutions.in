@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casos — TechoSolutions</title>
+<meta name="description" content="Casos reales de modernización de sistemas legacy, refactorización incremental y optimización de infraestructura para equipos pequeños.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
+<script id="counterscale-script" data-site-id="techosolutions-in" src="https://counterscale.techosolutionsin.workers.dev/tracker.js" defer></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { overflow-x: clip; font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; color: var(--color-ink); background: var(--color-paper); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+
+h1, h2, h3, h4, .display { font-family: var(--font-display); font-weight: 600; font-style: normal; line-height: 1.2; letter-spacing: -0.02em; overflow-wrap: anywhere; min-width: 0; }
+h1 { font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem); letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: clamp(1.75rem, 3.5vw + 0.5rem, 3rem); letter-spacing: -0.025em; }
+h3 { font-size: var(--text-xl); letter-spacing: -0.02em; }
+.body-large { font-size: var(--text-md); line-height: 1.65; color: var(--color-ink-2); max-width: 65ch; }
+.body { font-size: var(--text-base); line-height: 1.65; color: var(--color-ink-2); max-width: 65ch; }
+.accent { color: var(--color-accent); }
+.muted { color: var(--color-muted); }
+.wordmark { font-family: var(--font-outlier); font-weight: 600; font-size: 1.125rem; letter-spacing: -0.02em; }
+.container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: clamp(var(--space-md), 4vw, var(--space-3xl)); }
+section { padding-block: var(--space-4xl); }
+.section__title { margin-bottom: var(--space-xl); max-width: 20ch; }
+
+.nav { position: fixed; top: var(--space-md); left: 50%; transform: translateX(-50%); z-index: var(--z-sticky); width: fit-content; max-width: calc(100vw - var(--space-xl)); background: var(--color-nav-bg); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid var(--color-rule); border-radius: var(--radius-full); padding: var(--space-xs) var(--space-sm); display: flex; align-items: center; gap: var(--space-lg); }
+.nav__wordmark { font-family: var(--font-outlier); font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.02em; color: var(--color-ink); white-space: nowrap; padding: var(--space-2xs) var(--space-sm); }
+.nav__wordmark span { color: var(--color-accent); }
+.nav__links { display: flex; align-items: center; gap: var(--space-2xs); list-style: none; }
+.nav__link { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); padding: var(--space-2xs) var(--space-sm); border-radius: var(--radius-full); transition: color var(--dur-micro) var(--ease-out), background var(--dur-micro) var(--ease-out); white-space: nowrap; }
+.nav__link:hover { color: var(--color-ink); background: var(--color-paper-2); }
+.nav__link--active { color: var(--color-ink); background: var(--color-paper-3); }
+.nav__cta { background: var(--color-accent); color: var(--color-accent-ink) !important; font-weight: 600; padding: var(--space-2xs) var(--space-md) !important; }
+.nav__cta:hover { background: var(--color-accent-2) !important; color: var(--color-accent-ink) !important; }
+.nav__toggle { display: none; background: none; border: none; color: var(--color-ink); font-size: var(--text-xl); cursor: pointer; padding: var(--space-2xs); }
+
+.page-header { padding-top: calc(var(--space-4xl) + 4rem); padding-bottom: var(--space-2xl); }
+.page-header h1 { margin-bottom: var(--space-md); }
+
+.case-full { background: var(--color-paper-2); border-radius: var(--radius-md); padding: var(--space-xl); margin-bottom: var(--space-xl); }
+.case-full:last-child { margin-bottom: 0; }
+.case-full + .case-full { background: var(--color-paper); }
+.case-full__label { font-family: var(--font-display); font-size: var(--text-xs); color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-md); }
+.case-full h3 { margin-bottom: var(--space-lg); }
+.case-full__block { margin-bottom: var(--space-md); }
+.case-full__block strong { display: block; font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-ink); margin-bottom: var(--space-2xs); }
+.case-full__block p { font-size: var(--text-sm); color: var(--color-muted); line-height: 1.65; }
+.case-full__results { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--color-rule); }
+.case-full__result-item { text-align: center; }
+.case-full__result-value { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-accent); font-weight: 700; }
+.case-full__result-label { font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2xs); }
+
+.footer { border-top: 1px solid var(--color-rule); padding-block: var(--space-xl); }
+.footer__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; }
+.footer__copy { font-size: var(--text-sm); color: var(--color-muted); }
+.footer__links { display: flex; gap: var(--space-lg); list-style: none; }
+.footer__links a { font-size: var(--text-sm); color: var(--color-muted); transition: color var(--dur-micro) var(--ease-out); }
+.footer__links a:hover { color: var(--color-ink); }
+
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 60rem) {
+  .nav__links { display: none; }
+  .nav__toggle { display: block; }
+  .nav.is-open .nav__links { display: flex; flex-direction: column; position: absolute; top: calc(100% + var(--space-xs)); left: 50%; transform: translateX(-50%); background: var(--color-paper-2); border: 1px solid var(--color-rule); border-radius: var(--radius-md); padding: var(--space-sm); min-width: 200px; gap: var(--space-2xs); }
+}
+@media (max-width: 40rem) {
+  section { padding-block: var(--space-3xl); }
+  h1 { font-size: var(--text-2xl); }
+  .nav { padding: var(--space-2xs) var(--space-sm); }
+  .footer__inner { flex-direction: column; text-align: center; }
+  .case-full__results { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 150ms !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Navegación principal">
+  <a href="/" class="nav__wordmark">tech<span>o</span>solutions</a>
+  <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+  </button>
+  <ul class="nav__links">
+    <li><a href="/" class="nav__link">Inicio</a></li>
+    <li><a href="/servicios/" class="nav__link">Servicios</a></li>
+    <li><a href="/blog/" class="nav__link">Blog & Recursos</a></li>
+    <li><a href="/casos/" class="nav__link nav__link--active">Casos</a></li>
+    <li><a href="/sobre-mi/" class="nav__link">Sobre mí</a></li>
+    <li><a href="/contacto/" class="nav__link nav__cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <p class="hero__eyebrow" style="font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-accent); margin-bottom: var(--space-md); letter-spacing: 0.08em; text-transform: uppercase;">· casos</p>
+    <h1>Resultados que importan — sin humo</h1>
+    <p class="body-large">Casos anonimizados de equipos reales con sistemas que dolían y decisiones que cambiaron la dirección.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="case-full reveal">
+      <p class="case-full__label">caso 1</p>
+      <h3>Founder que codea — de sistema DIY a plataforma delegable</h3>
+      <div class="case-full__block">
+        <strong>Contexto</strong>
+        <p>Founder técnico que construyó el producto él mismo durante 3 años. Sistema en PHP puro con JavaScript vanilla, sin framework, sin tests, sin CI/CD. El negocio tenía clientes reales facturando, pero el founder era el único que entendía el código y estaba al borde del burnout.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Problema</strong>
+        <p>Deploys manuales los domingos a la noche "por las dudas". Cualquier cambio en el core requería 3 días de pruebas manuales. Contratar un dev era imposible porque nadie quería tojar ese código. La cloud bill crecía sin control porque todo estaba en el mismo servidor.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Foco de intervención</strong>
+        <p>Auditoría de 48h para identificar los 3 módulos más críticos. Refactorización incremental con Strangler Fig: primero el módulo de facturación (el que más cambios recibía), luego el de usuarios. Se agregó CI/CD básico, tests en los módulos nuevos y se separaron responsabilidades en servicios independientes.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Lecciones aprendidas</strong>
+        <p>No hace falta refactorizar todo para ver mejora. Con los primeros dos módulos refactorizados, el founder pudo delegar desarrollo de features no críticas a un dev freelance sin miedo a romper producción.</p>
+      </div>
+      <div class="case-full__results">
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">−60%</div>
+          <div class="case-full__result-label">latencia en hora pico</div>
+        </div>
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">100%</div>
+          <div class="case-full__result-label">deploys ahora son automatizados</div>
+        </div>
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">3x</div>
+          <div class="case-full__result-label">velocidad de releases</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-full reveal" style="transition-delay: 100ms">
+      <p class="case-full__label">caso 2</p>
+      <h3>Equipo pequeño con monolito heredado — del espagueti a los módulos</h3>
+      <div class="case-full__block">
+        <strong>Contexto</strong>
+        <p>Equipo de 5 devs manteniendo un monolito .NET Framework 4.6 construido por una agencia que ya no existía. Nadie del equipo original quedaba. La documentación era inexistente y el código no tenía tests.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Problema</strong>
+        <p>Incidentes recurrentes cada vez que tocaban el core. Cloud bill de $12k/mes sin justificación. Deploys de 4 horas los viernes a la noche. El equipo pasaba el 70% del tiempo apagando incendios y el 30% construyendo producto.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Foco de intervención</strong>
+        <p>Se realizó un mapeo de boundaries del dominio y se identificaron los módulos con mayor tasa de cambio. Se migró a .NET 8 con Modular Monolith como paso intermedio, manteniendo el monolito original funcionando en paralelo. Se implementó pipeline de CI/CD con tests automatizados y rollback en segundos.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Lecciones aprendidas</strong>
+        <p>Migrar a .NET 8 no fue el desafío técnico más grande — lo fue romper el acoplamiento implícito entre módulos. El Modular Monolith dio el equilibrio justo entre orden y velocidad sin la complejidad de microservicios.</p>
+      </div>
+      <div class="case-full__results">
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">−35%</div>
+          <div class="case-full__result-label">costos de infraestructura</div>
+        </div>
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">−80%</div>
+          <div class="case-full__result-label">incidentes en producción</div>
+        </div>
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">2h → 5min</div>
+          <div class="case-full__result-label">duración del deploy</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-full reveal" style="transition-delay: 200ms">
+      <p class="case-full__label">caso 3</p>
+      <h3>Proyecto IA/no-code que se volvió crítico — de prototipo a sistema serio</h3>
+      <div class="case-full__block">
+        <strong>Contexto</strong>
+        <p>Una agencia pequeña armó su plataforma interna de gestión de proyectos con una herramienta no-code + scripts en Python generados con ChatGPT. La usaban para gestionar sus propios proyectos y, eventualmente, sus clientes empezaron a depender de ella.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Problema</strong>
+        <p>La plataforma se caía cada vez que subían de 50 usuarios concurrentes. Las integraciones con APIs externas eran frágiles (sin timeout, sin retry, sin circuit breaker). No había forma de auditar cambios. Cualquier modificación requería volver a ChatGPT y rezar.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Foco de intervención</strong>
+        <p>Se identificaron los 3 flujos críticos: autenticación, gestión de proyectos y reportes. Se reimplementaron en .NET 8 con arquitectura hexagonal, manteniendo el frontend no-code funcionando contra las nuevas APIs. Se agregaron patrones de resiliencia (retry, circuit breaker, bulkhead) y monitoreo básico.</p>
+      </div>
+      <div class="case-full__block">
+        <strong>Lecciones aprendidas</strong>
+        <p>No-code + IA son excelentes para prototipar, pero cuando el negocio depende del sistema, necesitás arquitectura. La transición puede ser gradual: el frontend no-code sigue funcionando mientras el backend se profesionaliza.</p>
+      </div>
+      <div class="case-full__results">
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">0</div>
+          <div class="case-full__result-label">caídas desde la migración</div>
+        </div>
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">4×</div>
+          <div class="case-full__result-label">usuarios concurrentes soportados</div>
+        </div>
+        <div class="case-full__result-item">
+          <div class="case-full__result-value">−90%</div>
+          <div class="case-full__result-label">errores en integraciones</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <p class="footer__copy">© 2026 TechoSolutions — Arquitectura de software que paga dividendos</p>
+    <ul class="footer__links">
+      <li><a href="/sobre-mi/">Sobre mí</a></li>
+      <li><a href="/servicios/">Servicios</a></li>
+      <li><a href="/blog/">Blog & Recursos</a></li>
+      <li><a href="/casos/">Casos</a></li>
+      <li><a href="/contacto/">Contacto</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.nav__toggle')?.addEventListener('click', function() {
+  const nav = this.closest('.nav');
+  const expanded = nav.classList.toggle('is-open');
+  this.setAttribute('aria-expanded', expanded);
+});
+document.querySelectorAll('.nav__link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav')?.classList.remove('is-open');
+  });
+});
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>

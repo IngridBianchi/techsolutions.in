@@ -1,0 +1,9 @@
+node_modules/
+_site/
+.wrangler/
+counterscale-deploy/
+dev-server.log
+skills-lock.json
+.agents/
+.DS_Store
+*.log

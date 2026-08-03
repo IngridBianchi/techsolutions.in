@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre mí — TechoSolutions</title>
+<meta name="description" content="Ingrid Bianchi — arquitectura de software y modernización incremental para sistemas legacy. Conocé mi enfoque y mi historia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/tokens.css">
+<script id="counterscale-script" data-site-id="techosolutions-in" src="https://counterscale.techosolutionsin.workers.dev/tracker.js" defer></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { overflow-x: clip; font-family: var(--font-body); font-size: var(--text-base); line-height: 1.6; color: var(--color-ink); background: var(--color-paper); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+
+h1, h2, h3, h4, .display { font-family: var(--font-display); font-weight: 600; font-style: normal; line-height: 1.2; letter-spacing: -0.02em; overflow-wrap: anywhere; min-width: 0; }
+h1 { font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem); letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: clamp(1.75rem, 3.5vw + 0.5rem, 3rem); letter-spacing: -0.025em; }
+h3 { font-size: var(--text-xl); letter-spacing: -0.02em; }
+.body-large { font-size: var(--text-md); line-height: 1.65; color: var(--color-ink-2); max-width: 65ch; }
+.body { font-size: var(--text-base); line-height: 1.65; color: var(--color-ink-2); max-width: 65ch; }
+.accent { color: var(--color-accent); }
+.muted { color: var(--color-muted); }
+.wordmark { font-family: var(--font-outlier); font-weight: 600; font-size: 1.125rem; letter-spacing: -0.02em; }
+.container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: clamp(var(--space-md), 4vw, var(--space-3xl)); }
+section { padding-block: var(--space-4xl); }
+.section__title { margin-bottom: var(--space-xl); max-width: 20ch; }
+
+.nav { position: fixed; top: var(--space-md); left: 50%; transform: translateX(-50%); z-index: var(--z-sticky); width: fit-content; max-width: calc(100vw - var(--space-xl)); background: var(--color-nav-bg); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid var(--color-rule); border-radius: var(--radius-full); padding: var(--space-xs) var(--space-sm); display: flex; align-items: center; gap: var(--space-lg); }
+.nav__wordmark { font-family: var(--font-outlier); font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.02em; color: var(--color-ink); white-space: nowrap; padding: var(--space-2xs) var(--space-sm); }
+.nav__wordmark span { color: var(--color-accent); }
+.nav__links { display: flex; align-items: center; gap: var(--space-2xs); list-style: none; }
+.nav__link { font-family: var(--font-body); font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); padding: var(--space-2xs) var(--space-sm); border-radius: var(--radius-full); transition: color var(--dur-micro) var(--ease-out), background var(--dur-micro) var(--ease-out); white-space: nowrap; }
+.nav__link:hover { color: var(--color-ink); background: var(--color-paper-2); }
+.nav__link--active { color: var(--color-ink); background: var(--color-paper-3); }
+.nav__cta { background: var(--color-accent); color: var(--color-accent-ink) !important; font-weight: 600; padding: var(--space-2xs) var(--space-md) !important; }
+.nav__cta:hover { background: var(--color-accent-2) !important; color: var(--color-accent-ink) !important; }
+.nav__toggle { display: none; background: none; border: none; color: var(--color-ink); font-size: var(--text-xl); cursor: pointer; padding: var(--space-2xs); }
+
+.page-header { padding-top: calc(var(--space-4xl) + 4rem); padding-bottom: var(--space-2xl); }
+.page-header h1 { margin-bottom: var(--space-md); }
+
+.story { max-width: 65ch; }
+.story p { margin-bottom: var(--space-md); font-size: var(--text-base); line-height: 1.75; color: var(--color-ink-2); }
+.story p:last-child { margin-bottom: 0; }
+.story .highlight { color: var(--color-accent); font-weight: 500; }
+.story blockquote { border-left: 3px solid var(--color-accent); padding-left: var(--space-lg); margin: var(--space-lg) 0; font-size: var(--text-md); color: var(--color-ink); font-style: italic; }
+.story blockquote cite { display: block; font-size: var(--text-sm); color: var(--color-muted); font-style: normal; margin-top: var(--space-xs); }
+
+.creds { background: var(--color-paper-2); }
+.creds__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+.creds-card { background: var(--color-paper); border: 1px solid var(--color-rule); border-radius: var(--radius-md); padding: var(--space-lg); }
+.creds-card h3 { font-family: var(--font-display); font-size: var(--text-md); margin-bottom: var(--space-sm); }
+.creds-card p { font-size: var(--text-sm); color: var(--color-muted); line-height: 1.55; }
+.creds-card ul { list-style: none; margin-top: var(--space-sm); }
+.creds-card li { font-size: var(--text-sm); color: var(--color-muted); padding-left: var(--space-md); position: relative; margin-bottom: var(--space-2xs); }
+.creds-card li::before { content: ''; position: absolute; left: 0; top: 0.45em; width: 8px; height: 1px; background: var(--color-accent); }
+
+.mission { text-align: center; }
+.mission__inner { max-width: 600px; margin-inline: auto; }
+
+.footer { border-top: 1px solid var(--color-rule); padding-block: var(--space-xl); }
+.footer__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; }
+.footer__copy { font-size: var(--text-sm); color: var(--color-muted); }
+.footer__links { display: flex; gap: var(--space-lg); list-style: none; }
+.footer__links a { font-size: var(--text-sm); color: var(--color-muted); transition: color var(--dur-micro) var(--ease-out); }
+.footer__links a:hover { color: var(--color-ink); }
+
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 60rem) {
+  .creds__grid { grid-template-columns: 1fr; }
+  .nav__links { display: none; }
+  .nav__toggle { display: block; }
+  .nav.is-open .nav__links { display: flex; flex-direction: column; position: absolute; top: calc(100% + var(--space-xs)); left: 50%; transform: translateX(-50%); background: var(--color-paper-2); border: 1px solid var(--color-rule); border-radius: var(--radius-md); padding: var(--space-sm); min-width: 200px; gap: var(--space-2xs); }
+}
+@media (max-width: 40rem) {
+  section { padding-block: var(--space-3xl); }
+  h1 { font-size: var(--text-2xl); }
+  .nav { padding: var(--space-2xs) var(--space-sm); }
+  .footer__inner { flex-direction: column; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 150ms !important; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Navegación principal">
+  <a href="/" class="nav__wordmark">tech<span>o</span>solutions</a>
+  <button class="nav__toggle" aria-label="Menú" aria-expanded="false">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+  </button>
+  <ul class="nav__links">
+    <li><a href="/" class="nav__link">Inicio</a></li>
+    <li><a href="/servicios/" class="nav__link">Servicios</a></li>
+    <li><a href="/blog/" class="nav__link">Blog & Recursos</a></li>
+    <li><a href="/casos/" class="nav__link">Casos</a></li>
+    <li><a href="/sobre-mi/" class="nav__link nav__link--active">Sobre mí</a></li>
+    <li><a href="/contacto/" class="nav__link nav__cta">Contacto</a></li>
+  </ul>
+</nav>
+
+<section class="page-header">
+  <div class="container">
+    <p class="hero__eyebrow" style="font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-accent); margin-bottom: var(--space-md); letter-spacing: 0.08em; text-transform: uppercase;">· sobre mí</p>
+    <h1>Soy Ingrid Bianchi<br>y vengo de la <span class="accent">trinchera</span></h1>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="story reveal">
+      <p>Arranqué como muchos: haciendo un poco de todo. Laravel, Vue, Node, .NET. Pasé por startups chicas donde eras dev, sysadmin y soporte técnico al mismo tiempo. Aprendí a hacer deploys un domingo a la madrugada "por las dudas". Aprendí a tener miedo de tocar ciertas partes del código. Aprendí a justificar cloud bills que no entendía del todo.</p>
+
+      <p>En algún momento me di cuenta de que el problema no era mi capacidad técnica ni la del equipo. El problema era que estábamos construyendo sobre una base que no daba más. Que el sistema que había sido la solución correcta cuando empezamos se había convertido en el principal freno.</p>
+
+      <blockquote>
+        "La mayoría de los sistemas no mueren por falta de features. Mueren porque la arquitectura no dio el estirón."
+        <cite>— Ingrid Bianchi</cite>
+      </blockquote>
+
+      <p>Ahí hice el giro. De construir features a pensar arquitectura. De apagar incendios a diseñar sistemas que no se incendian. De trabajar en el sistema a trabajar <em>sobre</em> el sistema.</p>
+
+      <p>Hoy ayudo a founders que codean, equipos pequeños con sistemas heredados, gente que armó su producto con IA o no-code y ahora necesita que el sistema sea serio, y dueños de agencias cuya plataforma interna se convirtió en el cuello de botella. No hago rewrites suicidas. Hago modernización incremental, módulo a módulo, sin downtime, con el negocio funcionando todo el tiempo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="creds">
+  <div class="container">
+    <h2 class="section__title reveal">Formación &amp; enfoque</h2>
+    <div class="creds__grid">
+      <div class="creds-card reveal" style="--i: 0">
+        <h3>Técnica</h3>
+        <ul>
+          <li>Analista de Sistemas</li>
+          <li>Arquitecturas DDD, Hexagonal, Modular Monolith</li>
+          <li>Microservicios, mensajería asíncrona, patrones de resiliencia</li>
+          <li>.NET 8, Node, Python</li>
+          <li>CI/CD, infraestructura como código</li>
+        </ul>
+      </div>
+      <div class="creds-card reveal" style="--i: 1">
+        <h3>De negocio</h3>
+        <ul>
+          <li>Licenciatura en Marketing</li>
+          <li>Experiencia en startups y agencias chicas</li>
+          <li>Traducción técnica → negocio para boards y clientes</li>
+          <li>Framework de decisión: riesgo, ROI, velocidad</li>
+          <li>Comunicación no violenta en equipos técnicos</li>
+        </ul>
+      </div>
+      <div class="creds-card reveal" style="--i: 2">
+        <h3>Experiencia</h3>
+        <ul>
+          <li>+8 años como full stack en startups y agencias</li>
+          <li>+3 años enfocada en arquitectura y modernización</li>
+          <li>Trabajo remoto con equipos de 2–10 devs</li>
+          <li>Sistemas vivos con presión real de negocio</li>
+          <li>Refactorizaciones incrementales en producción</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mission">
+  <div class="container mission__inner">
+    <h2 class="section__title reveal" style="margin-inline: auto">Mi misión</h2>
+    <p class="body-large reveal" style="transition-delay: 100ms">Que los sistemas legacy vuelvan a ser un activo de negocio, no una fuente de estrés. Que los founders puedan dormir tranquilos. Que los equipos pequeños tengan acceso a arquitectura buena sin pagar el precio de una consultora grande.</p>
+    <div class="reveal" style="transition-delay: 200ms; margin-top: var(--space-xl);">
+      <a href="/contacto/" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: var(--space-xs); font-family: var(--font-body); font-size: var(--text-sm); font-weight: 600; padding: var(--space-sm) var(--space-xl); border-radius: var(--radius-md); border: none; cursor: pointer; transition: transform var(--dur-micro) var(--ease-out), background var(--dur-micro) var(--ease-out), box-shadow var(--dur-micro) var(--ease-out); white-space: nowrap;">Hablemos de tu sistema</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="container footer__inner">
+    <p class="footer__copy">© 2026 TechoSolutions — Arquitectura de software que paga dividendos</p>
+    <ul class="footer__links">
+      <li><a href="/sobre-mi/">Sobre mí</a></li>
+      <li><a href="/servicios/">Servicios</a></li>
+      <li><a href="/blog/">Blog & Recursos</a></li>
+      <li><a href="/casos/">Casos</a></li>
+      <li><a href="/contacto/">Contacto</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.nav__toggle')?.addEventListener('click', function() {
+  const nav = this.closest('.nav');
+  const expanded = nav.classList.toggle('is-open');
+  this.setAttribute('aria-expanded', expanded);
+});
+document.querySelectorAll('.nav__link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('.nav')?.classList.remove('is-open');
+  });
+});
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>

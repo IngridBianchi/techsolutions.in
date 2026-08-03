@@ -1,0 +1,21 @@
+{
+  "name": "techosolutions.in",
+  "version": "1.0.0",
+  "description": "TechoSolutions — arquitectura de software que paga dividendos",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve",
+    "start": "eleventy --serve"
+  },
+  "keywords": [
+    "eleventy",
+    "static-site",
+    "blog"
+  ],
+  "author": "Ingrid Bianchi",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  }
+}

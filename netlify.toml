@@ -1,0 +1,36 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+[[redirects]]
+  from = "/recursos"
+  to = "/blog"
+  status = 301
+
+[[redirects]]
+  from = "/recursos/"
+  to = "/blog/"
+  status = 301
+
+[[redirects]]
+  from = "/servicios.html"
+  to = "/servicios/"
+  status = 301
+
+[[redirects]]
+  from = "/casos.html"
+  to = "/casos/"
+  status = 301
+
+[[redirects]]
+  from = "/sobre-mi.html"
+  to = "/sobre-mi/"
+  status = 301
+
+[[redirects]]
+  from = "/contacto.html"
+  to = "/contacto/"
+  status = 301
