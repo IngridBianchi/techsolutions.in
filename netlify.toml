@@ -34,3 +34,8 @@
   from = "/contacto.html"
   to = "/contacto/"
   status = 301
+
+[[redirects]]
+  from = "/blog/posts/*"
+  to = "/blog/:splat"
+  status = 301
